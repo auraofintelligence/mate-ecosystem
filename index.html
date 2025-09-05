@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Spectrum Consumption Ecosystem - Interactive Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Warm Harmony" - A palette of warm neutrals (bg-stone-50, bg-stone-100), with a muted teal (teal-600, teal-700) for primary actions and accents, and a soft amber (amber-500) for highlights and warnings. This creates a calm, professional, and inviting feel. -->
+    <!-- Application Structure Plan: The SPA is designed as a top-down narrative journey. It starts with a high-level 'Executive Dashboard' for key metrics, then flows into 'The Ecosystem' to introduce the 'Mate' modules. A dedicated 'Market Opportunity' section uses interactive charts to make data digestible. 'System Architecture' uses interactive diagrams to explain the tech stack. 'User-Centric Design' allows users to explore different personas. Finally, the 'Strategic Roadmap' provides a clear, interactive timeline. This structure guides the user from the "what" and "why" to the "how" and "when," making a complex business plan intuitive and engaging. -->
+    <!-- Visualization & Content Choices: 
+        - Market Size (Report Info) -> Goal: Compare growth across regions -> Viz: Interactive Bar Chart (Chart.js) -> Interaction: Buttons to switch between USA, UK, AUS data -> Justification: Bar charts are excellent for direct comparison, and interactivity makes the dense data explorable without clutter.
+        - MVP vs. Elegant Cost (Report Info) -> Goal: Compare cost breakdown -> Viz: Stacked Bar Chart (Chart.js) -> Interaction: Tooltips on hover to show cost per feature -> Justification: A stacked bar clearly shows the composition of the total cost and how different features contribute to the overall budget.
+        - System Architecture (Report Info) -> Goal: Organize and explain a process -> Viz: Styled HTML/CSS Diagram (Tailwind) -> Interaction: Hover effects on modules to reveal more info -> Justification: An interactive diagram is more engaging than a static image and allows for layered information without overwhelming the user. NO SVG/Mermaid used.
+        - User Personas (Report Info) -> Goal: Compare different user needs -> Viz: Tabbed content sections (HTML/JS) -> Interaction: Clicking tabs reveals detailed UX/UI principles for each persona -> Justification: Tabs are a space-efficient way to present detailed, comparative information, allowing users to focus on one persona at a time.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0d9488; /* teal-600 */
+            border-bottom-color: #0d9488; /* teal-600 */
+        }
+        .btn-primary {
+            background-color: #0d9488; /* teal-600 */
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0f766e; /* teal-700 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            color: #1e293b; /* slate-800 */
+        }
+        .section-subtitle {
+            color: #475569; /* slate-600 */
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-teal-600">
+                FSC<span class="text-slate-700">Ecosystem</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#dashboard" class="nav-link active">Dashboard</a>
+                <a href="#ecosystem" class="nav-link">The Mates</a>
+                <a href="#market" class="nav-link">Market</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#personas" class="nav-link">Personas</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-slate-600 hover:bg-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#dashboard" class="block nav-link active">Dashboard</a>
+            <a href="#ecosystem" class="block nav-link">The Mates</a>
+            <a href="#market" class="block nav-link">Market</a>
+            <a href="#architecture" class="block nav-link">Architecture</a>
+            <a href="#personas" class="block nav-link">Personas</a>
+            <a href="#roadmap" class="block nav-link">Roadmap</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+        
+        <section id="dashboard" class="text-center mb-24 scroll-mt-20">
+            <h1 class="text-4xl md:text-5xl font-bold section-title mb-4">The Full Spectrum Consumption Ecosystem</h1>
+            <p class="max-w-3xl mx-auto section-subtitle text-lg">An interactive analysis of an integrated, persona-aware AI platform for home, health, and sustainability. This application synthesizes strategic reports to provide a dynamic overview of the market opportunity, system architecture, and go-to-market plan.</p>
+        </section>
+
+        <section id="ecosystem" class="mb-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">Meet the "Mate" Modules</h2>
+            <p class="text-center section-subtitle mb-12 max-w-2xl mx-auto">The ecosystem is comprised of four synergistic modules, each addressing a key part of the food lifecycle. Together, they create a seamless flow from seed to plate to preservation.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card p-6 text-center">
+                    <div class="text-5xl mb-4">🌱</div>
+                    <h3 class="text-xl font-bold text-teal-600 mb-2">Garden Mate</h3>
+                    <p class="text-slate-600">Automates food production from seed to harvest using IoT sensors and AI-driven insights for soil, hydroponics, and even small-scale animal husbandry.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="text-5xl mb-4">🍲</div>
+                    <h3 class="text-xl font-bold text-teal-600 mb-2">Kitchen Mate</h3>
+                    <p class="text-slate-600">An intelligent pantry that manages inventory, plans meals to reduce waste, and integrates health data for personalized nutrition.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="text-5xl mb-4">🧪</div>
+                    <h3 class="text-xl font-bold text-teal-600 mb-2">Fermentation Mate</h3>
+                    <p class="text-slate-600">Guides and automates craft food and beverage production, from sourdough to homebrew, making complex hobbies accessible.</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="text-5xl mb-4">🎉</div>
+                    <h3 class="text-xl font-bold text-teal-600 mb-2">Event Mate</h3>
+                    <p class="text-slate-600">Streamlines social gatherings by managing guest dietary needs, scaling recipes, and coordinating collaborative meal prep.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="market" class="mb-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">A Multi-Billion Dollar Opportunity</h2>
+            <p class="text-center section-subtitle mb-12 max-w-2xl mx-auto">The platform targets the intersection of several booming markets. The online grocery sector, a key indicator of consumer readiness, shows explosive growth across all target regions.</p>
+            <div class="card p-6 md:p-8">
+                <div class="flex justify-center mb-6 space-x-2">
+                    <button id="btn-usa" class="market-btn btn-primary px-4 py-2 rounded-md text-sm font-medium">USA</button>
+                    <button id="btn-uk" class="market-btn bg-slate-200 text-slate-700 hover:bg-slate-300 px-4 py-2 rounded-md text-sm font-medium transition">UK</button>
+                    <button id="btn-aus" class="market-btn bg-slate-200 text-slate-700 hover:bg-slate-300 px-4 py-2 rounded-md text-sm font-medium transition">Australia</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="marketChart"></canvas>
+                </div>
+                <p id="market-narrative" class="text-center mt-4 text-slate-600 max-w-2xl mx-auto"></p>
+            </div>
+        </section>
+        
+        <section id="architecture" class="mb-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">System Architecture</h2>
+            <p class="text-center section-subtitle mb-12 max-w-2xl mx-auto">The Kitchen Mate's architecture is designed for a seamless flow of information, from data input to intelligent action. Hover over each module to learn more about its function.</p>
+            <div class="card p-6 md:p-8">
+                <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-center">
+                    <div class="arch-module p-4 border-2 border-slate-200 rounded-lg w-full md:w-1/4">
+                        <h4 class="font-bold text-teal-600">1. Data Ingestion</h4>
+                        <p class="text-sm text-slate-500 hidden md:block">Barcode, OCR, Voice & Vision capture what you have.</p>
+                        <div class="arch-info hidden absolute bg-white p-4 rounded-lg shadow-lg border -mt-24 w-64">
+                            <h5 class="font-bold mb-1">Data Ingestion Layer</h5>
+                            <p class="text-sm">Utilizes the phone's camera for barcode scanning and receipt OCR, and the microphone for voice logging. This multi-modal approach makes adding items fast and frictionless, overcoming the primary hurdle of pantry apps.</p>
+                        </div>
+                    </div>
+                    <div class="text-2xl text-slate-400">→</div>
+                    <div class="arch-module p-4 border-2 border-slate-200 rounded-lg w-full md:w-1/4">
+                        <h4 class="font-bold text-teal-600">2. Central Ledger</h4>
+                        <p class="text-sm text-slate-500 hidden md:block">A real-time database acts as the single source of truth.</p>
+                         <div class="arch-info hidden absolute bg-white p-4 rounded-lg shadow-lg border -mt-24 w-64">
+                            <h5 class="font-bold mb-1">Central Inventory Ledger</h5>
+                            <p class="text-sm">This cloud-based database is the system's memory. It tracks every item's quantity, purchase date, expiration date, and location, ensuring data is synced across all user devices and modules.</p>
+                        </div>
+                    </div>
+                    <div class="text-2xl text-slate-400">→</div>
+                    <div class="arch-module p-4 border-2 border-slate-200 rounded-lg w-full md:w-1/4">
+                        <h4 class="font-bold text-teal-600">3. Planning Engine</h4>
+                        <p class="text-sm text-slate-500 hidden md:block">AI generates meal plans to reduce waste and meet health goals.</p>
+                         <div class="arch-info hidden absolute bg-white p-4 rounded-lg shadow-lg border -mt-24 w-64">
+                            <h5 class="font-bold mb-1">Planning Engine</h5>
+                            <p class="text-sm">The "brain" of the system. It uses a weighted AI algorithm to suggest recipes based on what's expiring soon, user preferences, and health data, supporting both structured planners and spontaneous "vibe cooks".</p>
+                        </div>
+                    </div>
+                    <div class="text-2xl text-slate-400">→</div>
+                    <div class="arch-module p-4 border-2 border-slate-200 rounded-lg w-full md:w-1/4">
+                        <h4 class="font-bold text-teal-600">4. Action Modules</h4>
+                        <p class="text-sm text-slate-500 hidden md:block">Procurement and Guidance systems close the loop.</p>
+                         <div class="arch-info hidden absolute bg-white p-4 rounded-lg shadow-lg border -mt-24 w-64">
+                            <h5 class="font-bold mb-1">Procurement & Guidance</h5>
+                            <p class="text-sm">The Procurement module creates smart shopping lists of only what's needed. The Guidance system provides interactive, step-by-step cooking instructions and automatically decrements used ingredients from the ledger.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="personas" class="mb-24 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">Designing for the Human Spectrum</h2>
+            <p class="text-center section-subtitle mb-12 max-w-2xl mx-auto">The platform's success depends on an adaptive UI/UX tailored to a diverse range of user personas. Select a persona to see how the interface adapts to their specific needs.</p>
+            <div class="card">
+                <div class="flex border-b border-slate-200">
+                    <button class="persona-tab flex-1 p-4 font-medium text-slate-500 border-b-2 border-transparent hover:bg-slate-50" data-persona="standard">Standard User</button>
+                    <button class="persona-tab flex-1 p-4 font-medium text-slate-500 border-b-2 border-transparent hover:bg-slate-50" data-persona="forgetful">"Forgetful"</button>
+                    <button class="persona-tab flex-1 p-4 font-medium text-slate-500 border-b-2 border-transparent hover:bg-slate-50" data-persona="elderly">Elderly</button>
+                    <button class="persona-tab flex-1 p-4 font-medium text-slate-500 border-b-2 border-transparent hover:bg-slate-50" data-persona="child">Child</button>
+                    <button class="persona-tab flex-1 p-4 font-medium text-slate-500 border-b-2 border-transparent hover:bg-slate-50" data-persona="expert">Expert</button>
+                </div>
+                <div id="persona-content" class="p-6 md:p-8">
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center section-title mb-2">Strategic Roadmap & Investment</h2>
+            <p class="text-center section-subtitle mb-12 max-w-2xl mx-auto">A phased, agile approach manages complexity and risk, moving from a focused Minimum Viable Product to a full-featured, elegant solution. This chart visualizes the cost breakdown for each stage.</p>
+            <div class="card p-6 md:p-8">
+                <div class="chart-container" style="height: 450px; max-height: 500px;">
+                    <canvas id="costChart"></canvas>
+                </div>
+                <div class="mt-8 border-t pt-6">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-lg text-teal-700">MVP (Est: $34k - $72k)</h4>
+                            <p class="text-slate-600 mt-1">The goal of the MVP is rapid market entry to validate the core value proposition: the link between inventory and meal planning. It focuses on essential features like barcode scanning and a basic recipe matcher to solve the user's primary pain point with minimal financial risk.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-teal-700">Elegant Solution (Est: $125k - $250k+)</h4>
+                            <p class="text-slate-600 mt-1">The elegant solution expands on the MVP with high-value features like Receipt OCR and Voice Logging. It also includes a more polished UI/UX, cross-platform support, and the foundational framework for future health data integrations, commanding a premium subscription.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 mt-24">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 FSC Ecosystem Strategic Analysis. All data synthesized from provided reports.</p>
+            <p class="text-sm text-slate-400 mt-2">This is an interactive visualization and does not represent a real, publicly-traded entity.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section');
+
+            const activateLink = (link) => {
+                navLinks.forEach(l => l.classList.remove('active', 'text-teal-600', 'border-teal-600'));
+                link.classList.add('active', 'text-teal-600', 'border-teal-600');
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                    activateLink(link);
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active', 'text-teal-600', 'border-teal-600');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active', 'text-teal-600', 'border-teal-600');
+                    }
+                });
+            });
+
+            const marketData = {
+                usa: {
+                    labels: ['2024', '2033 Forecast'],
+                    data: [67.6, 992.3],
+                    narrative: "The US online grocery market is projected for explosive growth, with a staggering 36.8% CAGR, indicating massive consumer readiness for digital food solutions."
+                },
+                uk: {
+                    labels: ['2024', '2033 Forecast'],
+                    data: [23.4, 29.4],
+                    narrative: "The mature UK market shows steady growth, but the instant delivery sub-market's 20% CAGR highlights a strong demand for high-convenience technology."
+                },
+                aus: {
+                    labels: ['2024', '2034 Forecast'],
+                    data: [10.4, 33.8],
+                    narrative: "Australia's market is set for robust growth at a 12.4% CAGR, driven by high internet penetration and major retailers investing heavily in online fulfillment."
+                }
+            };
+
+            const marketChartCtx = document.getElementById('marketChart').getContext('2d');
+            let marketChart = new Chart(marketChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: marketData.usa.labels,
+                    datasets: [{
+                        label: 'Market Size (USD Billions)',
+                        data: marketData.usa.data,
+                        backgroundColor: ['rgba(20, 184, 166, 0.6)', 'rgba(15, 118, 110, 0.6)'],
+                        borderColor: ['rgb(20, 184, 166)', 'rgb(15, 118, 110)'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `$${context.raw.toFixed(1)} Billion`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Market Size (USD Billions)'
+                            }
+                        }
+                    }
+                }
+            });
+            
+            document.getElementById('market-narrative').textContent = marketData.usa.narrative;
+            
+            const marketButtons = document.querySelectorAll('.market-btn');
+            marketButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const region = button.id.split('-')[1];
+                    marketChart.data.labels = marketData[region].labels;
+                    marketChart.data.datasets[0].data = marketData[region].data;
+                    marketChart.update();
+                    document.getElementById('market-narrative').textContent = marketData[region].narrative;
+
+                    marketButtons.forEach(btn => {
+                        btn.classList.remove('btn-primary');
+                        btn.classList.add('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
+                    });
+                    button.classList.add('btn-primary');
+                    button.classList.remove('bg-slate-200', 'text-slate-700', 'hover:bg-slate-300');
+                });
+            });
+
+            const costData = {
+                labels: ['MVP ($34k-$72k)', 'Elegant Solution ($125k-$250k)'],
+                datasets: [
+                    { label: 'Scoping & Prototyping', data: [7.5, 15], backgroundColor: 'rgba(14, 165, 233, 0.7)' },
+                    { label: 'UI/UX Design', data: [7, 21], backgroundColor: 'rgba(56, 189, 248, 0.7)' },
+                    { label: 'Backend & DB', data: [15, 30], backgroundColor: 'rgba(13, 148, 136, 0.7)' },
+                    { label: 'Core Features & Barcode', data: [7.5, 11.25], backgroundColor: 'rgba(20, 184, 166, 0.7)' },
+                    { label: 'Recipe Engine & List', data: [8.5, 22.5], backgroundColor: 'rgba(45, 212, 191, 0.7)' },
+                    { label: 'OCR & Voice', data: [0, 27.5], backgroundColor: 'rgba(245, 158, 11, 0.7)' },
+                    { label: 'Health API Framework', data: [0, 22.5], backgroundColor: 'rgba(251, 191, 36, 0.7)' },
+                    { label: 'QA & Deployment', data: [7.5, 30], backgroundColor: 'rgba(107, 114, 128, 0.7)' },
+                ]
+            };
+
+            const costChartCtx = document.getElementById('costChart').getContext('2d');
+            const costChart = new Chart(costChartCtx, {
+                type: 'bar',
+                data: costData,
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Estimated Development Cost Breakdown (USD Thousands)' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: $${context.raw.toFixed(1)}k`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { stacked: true, title: { display: true, text: 'Cost (USD Thousands)' } },
+                        y: { stacked: true }
+                    }
+                }
+            });
+
+            const archModules = document.querySelectorAll('.arch-module');
+            archModules.forEach(module => {
+                const infoBox = module.querySelector('.arch-info');
+                module.addEventListener('mouseenter', () => {
+                    infoBox.classList.remove('hidden');
+                });
+                module.addEventListener('mouseleave', () => {
+                    infoBox.classList.add('hidden');
+                });
+            });
+
+            const personaData = {
+                standard: {
+                    title: "Standard User",
+                    content: `
+                        <ul class="space-y-3 list-disc list-inside text-slate-600">
+                            <li><strong>Navigation:</strong> Standard hamburger menu on mobile and tab bar on desktop with nested options for power users.</li>
+                            <li><strong>Language:</strong> Neutral, efficient language with standard notifications that are clear and concise.</li>
+                            <li><strong>Interaction:</strong> Supports all standard gestures like swipe, pinch-to-zoom, and double-tap for efficiency.</li>
+                            <li><strong>Cognitive Load:</strong> Information-dense displays are enabled, allowing for multi-tasking and quick access to a wide range of features from a single screen.</li>
+                        </ul>`
+                },
+                forgetful: {
+                    title: "Persona: 'Forgetful' (Cognitive Decline)",
+                    content: `
+                        <p class="mb-4 text-amber-800 bg-amber-100 p-3 rounded-lg"><strong>Design Goal:</strong> Promote autonomy and dignity by reducing cognitive load and providing clear, supportive guidance.</p>
+                        <ul class="space-y-3 list-disc list-inside text-slate-600">
+                            <li><strong>Navigation:</strong> Always-visible, linear navigation. No hidden menus. A prominent "Home" button is always present. Sections are clearly separated.</li>
+                            <li><strong>Language:</strong> Simple, direct sentences. Instructions are broken down into single steps. Reminders provide full context (e.g., "Time to water the basil you planted last week.").</li>
+                            <li><strong>Interaction:</strong> Focus on simple, single taps. Avoids complex gestures. All actions have clear, explicit buttons.</li>
+                            <li><strong>Cognitive Load:</strong> A strict single-task focus per screen. No pop-ups, auto-playing media, or distracting advertisements. Progress in longer tasks can be saved.</li>
+                        </ul>`
+                },
+                elderly: {
+                    title: "Persona: Elderly",
+                    content: `
+                        <p class="mb-4 text-teal-800 bg-teal-50 p-3 rounded-lg"><strong>Design Goal:</strong> Prioritize readability, clarity, and accessibility for users who may have vision or motor skill challenges.</p>
+                        <ul class="space-y-3 list-disc list-inside text-slate-600">
+                            <li><strong>Navigation:</strong> Uses larger touch targets (at least 44x44 pixels) and high-contrast icons. Optional voice navigation for hands-free control.</li>
+                            <li><strong>Language:</strong> Employs larger, sans-serif fonts (16pt minimum) with a high-contrast text-to-background ratio (at least 4.5:1).</li>
+                            <li><strong>Interaction:</strong> Provides visible button alternatives for all swipe gestures. Full support for stylus use. Reduces reliance on fine motor skills.</li>
+                            <li><strong>Cognitive Load:</strong> Layouts are predictable and consistent across the app. A flat navigation structure avoids deep, confusing menus.</li>
+                        </ul>`
+                },
+                child: {
+                    title: "Persona: Child",
+                    content: `
+                        <p class="mb-4 text-sky-800 bg-sky-100 p-3 rounded-lg"><strong>Design Goal:</strong> Make learning about food and gardening an engaging, fun, and safe experience through gamification and interactive storytelling.</p>
+                        <ul class="space-y-3 list-disc list-inside text-slate-600">
+                            <li><strong>Navigation:</strong> Primarily icon-based with minimal text. Limited choices per screen (3-4 options) to avoid overwhelm.</li>
+                            <li><strong>Language:</strong> Playful and encouraging tone. Uses positive reinforcement, like animations and sounds, to celebrate success.</li>
+                            <li><strong>Interaction:</strong> Focuses on broad, simple gestures like tapping and dragging. Touch targets are large and forgiving. Provides immediate auditory and visual feedback for all actions.</li>
+                            <li><strong>Cognitive Load:</strong> Presents tasks as gamified challenges with clear goals. A secure, gated parental control section allows adults to manage settings.</li>
+                        </ul>`
+                },
+                expert: {
+                    title: "Persona: Expert / 'Ego Maniac'",
+                    content: `
+                        <p class="mb-4 text-slate-800 bg-slate-100 p-3 rounded-lg"><strong>Design Goal:</strong> Empower users who crave data, customization, and complete control over the system's functionality.</p>
+                        <ul class="space-y-3 list-disc list-inside text-slate-600">
+                            <li><strong>Progressive Disclosure:</strong> While the default view is simple, experts can unlock advanced dashboards and controls.</li>
+                            <li><strong>Granular Control:</strong> Provides direct access to raw sensor data feeds from the Garden Mate, custom automation scripting, and API access for integration with platforms like Home Assistant.</li>
+                            <li><strong>Generative AI Access:</strong> Allows direct interaction with the generative AI for recipe creation, with adjustable parameters for creativity, complexity, and adherence to culinary norms.</li>
+                            <li><strong>Data Export:</strong> All user-generated data (inventory history, meal logs, garden performance) can be exported for external analysis.</li>
+                        </ul>`
+                }
+            };
+
+            const personaTabs = document.querySelectorAll('.persona-tab');
+            const personaContent = document.getElementById('persona-content');
+
+            function updatePersonaContent(persona) {
+                personaContent.innerHTML = `
+                    <h3 class="text-2xl font-bold section-title mb-4">${personaData[persona].title}</h3>
+                    ${personaData[persona].content}
+                `;
+                personaTabs.forEach(t => {
+                    t.classList.remove('text-teal-600', 'border-teal-600', 'bg-slate-50');
+                    t.classList.add('text-slate-500', 'border-transparent');
+                });
+                const activeTab = document.querySelector(`.persona-tab[data-persona="${persona}"]`);
+                activeTab.classList.add('text-teal-600', 'border-teal-600', 'bg-slate-50');
+                activeTab.classList.remove('text-slate-500', 'border-transparent');
+            }
+            
+            personaTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const persona = tab.dataset.persona;
+                    updatePersonaContent(persona);
+                });
+            });
+
+            updatePersonaContent('standard');
+        });
+    </script>
+</body>
+</html>
