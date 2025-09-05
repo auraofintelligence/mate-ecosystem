@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Mate - MATE Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: #0d9488; /* teal-600 */
+            border-bottom-color: #0d9488; /* teal-600 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            color: #1e293b; /* slate-800 */
+        }
+        .section-subtitle {
+            color: #475569; /* slate-600 */
+        }
+        .feature-card {
+            background: linear-gradient(145deg, #ffffff, #e6eefc);
+            border-left: 4px solid #0d9488; /* teal-600 */
+        }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-teal-600">
+                FSC<span class="text-slate-700">Ecosystem</span>
+            </a>
+            <a href="index.html#ecosystem" class="nav-link text-lg hover:text-teal-600">← Back to Mates</a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="kitchen-intro" class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold section-title mb-4">The Kitchen Mate</h1>
+            <p class="max-w-3xl mx-auto section-subtitle text-lg">The intelligent hub for your kitchen that transforms how you manage food, plan meals, and reduce waste. It's the solution to the fragmented and manual-entry-heavy apps of today.</p>
+        </section>
+
+        <!-- Smart Pantry Section -->
+        <section id="smart-pantry" class="mb-20">
+            <h2 class="text-3xl font-bold section-title mb-3 flex items-center"><span class="text-4xl mr-4">🥫</span> The Smart Pantry: An AI-Powered Inventory System</h2>
+            <p class="section-subtitle text-lg mb-8">The core of an intelligent kitchen is knowing what you have. The Smart Pantry automates inventory management, eliminating the tedious manual entry that causes users to abandon other apps.</p>
+            <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Automated Food Recognition</h3>
+                    <p class="text-slate-600">Utilizing strategically placed cameras within refrigerators and pantries, our system employs advanced AI models like YOLACT to recognize items as they're added or removed, updating your digital inventory in real-time.</p>
+                </div>
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Receipt & Label Digitization</h3>
+                    <p class="text-slate-600">A powerful Optical Character Recognition (OCR) engine allows you to simply scan grocery receipts. The system automatically extracts line items, quantities, and even 'Best Before' dates, seamlessly populating your inventory.</p>
+                </div>
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Inventory & Expiration Management</h3>
+                    <p class="text-slate-600">The AI Core fuses data from all sources—harvests from Garden Mate, receipt scans, and manual entries—into a dynamic, real-time inventory. It vigilantly tracks expiration dates and sends proactive alerts to drastically minimize food waste.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Culinary AI Section -->
+        <section id="culinary-ai">
+            <h2 class="text-3xl font-bold section-title mb-3 flex items-center"><span class="text-4xl mr-4">🧑‍🍳</span> The Culinary AI: Personalized & Proactive Meal Planning</h2>
+            <p class="section-subtitle text-lg mb-8">With a perfect, real-time inventory, the Culinary AI transcends basic recipe finders to become a true kitchen assistant that provides personalized, actionable meal plans.</p>
+            <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Ingredient-Based Recipe Generation</h3>
+                    <p class="text-slate-600">The recommendation engine intelligently suggests recipes based *only* on the ingredients you currently have, prioritizing your own saved or favorite recipes to ensure meals you'll actually enjoy.</p>
+                </div>
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Generative AI for Novel Recipes</h3>
+                    <p class="text-slate-600">Feeling adventurous? A fine-tuned generative AI can create entirely new recipes on demand based on available ingredients, dietary needs, and flavor profiles, complete with safety guardrails to ensure the suggestions are coherent and safe.</p>
+                </div>
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Health & Longevity Integration</h3>
+                    <p class="text-slate-600">The AI crafts meal plans aligned with specific health goals (e.g., Mediterranean, Blue Zones) and can tailor them to your individual biometric needs by integrating with personal health data from wearables and other sources.</p>
+                </div>
+                <div class="card feature-card p-6">
+                    <h3 class="text-xl font-bold text-teal-700 mb-2">Voice-Powered Food Logging</h3>
+                    <p class="text-slate-600">"I had a bowl of oatmeal with blueberries and a coffee for breakfast." A sophisticated voice interface allows you to describe meals in natural language. The AI parses the statement, estimates portions, and logs the nutritional data automatically.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 mt-24">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p>&copy; 2025 FSC Ecosystem Strategic Analysis. All data synthesized from provided reports.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
