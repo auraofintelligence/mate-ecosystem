@@ -1,73 +1,265 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Mate - MATE Ecosystem</title>
+    <title>Event Mate - Flashy & Modern</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f5f5f4; /* stone-100 */
         }
     </style>
 </head>
-<body class="text-stone-800">
+<body class="bg-gray-900 text-white">
 
-    <div class="container mx-auto p-4 md:p-8">
+    <header class="sticky top-0 z-50 bg-gray-900/50 backdrop-blur-lg border-b border-purple-500/30">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">
+                <a href="index.html" class="hover:text-pink-400 transition-colors duration-300">&larr; FSC<span class="text-purple-400">Ecosystem</span></a>
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold">
+                <a href="#planning" class="hover:text-pink-400 transition-colors duration-300">Planning</a>
+                <a href="#execution" class="hover:text-pink-400 transition-colors duration-300">Execution</a>
+                <a href="#scaling" class="hover:text-pink-400 transition-colors duration-300">Scaling</a>
+            </div>
+             <div class="text-2xl font-extrabold">
+                Event<span class="text-pink-400">Mate</span>
+            </div>
+        </nav>
+    </header>
 
-        <header class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-stone-900">The Event Mate - The Social Fabric of Food</h1>
-            <p class="mt-2 text-lg text-stone-600 max-w-3xl mx-auto">The Event Mate module transforms the often solitary acts of gardening and cooking into collaborative and communal experiences. It provides tools to streamline the planning and execution of social gatherings, from intimate dinner parties to large group meals,addressing key pain points for hosts and fostering a sense of community around food.</p>
-        </header>
+    <main class="container mx-auto px-6 py-12">
 
-        <main>
-            <section id="social-planning" class="mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4 text-stone-900">4.1. Seamless Social & Event Planning</h2>
-                    <p class="mb-6 text-stone-700">This module integrates powerful event management features directly into the FSC ecosystem, leveraging the platform's existing data on recipes and inventory.</p>
-                    <div class="space-y-4">
-                        <p><strong>Integrated Event Management:</strong> The Event Mate willfunction as a specialized planning tool, seamlessly integrating with the user's native calendar and contact Iist.It will manage the entire event lifecycle, from sending invitations and tracking RSVPs to serving as a central communication hub for allevent-related information.This functionality mirrors the user-friendly approach of modern platforms ike Partiful and TopEvent, but with a deep focus on food-centric gatherings.</p>
-                        <p><strong>Guest Profile & Dietary Restriction Management:</strong> A critical and high-value feature is the automated management of guest dietary needs. When a host creates an event, the system generates a digital invitation with alink to a simple, user-friendly form where guests can specify their dietary restrictions and allergies.This form will use a combination of checkboxes for common requirements (e.g. vegetarian, gluten-free,dairy-free, nut allergy)and free-text fields for guests to provide specific details,including the severity of their allergies. This information is then automatically aggregated into a master guest list within the event dashboard. The host and any collaborators can view this list, which can be color-coded or tagged for easy reference during menu planning and food preparation. This automated collection and organization process solves a major, high-anxiety pain point for anyone who has ever hosted a group meal.</p>
-                        <p><strong>Menu Planning & Validation:</strong> The host can build the event menu directly within the app, selecting recipes from their personal collction or generating new ones with the Culinary Al. The system's most powerful feature here is its ability to cross-reference the planned menu against the aggregated guest dietary data.The Al will automatically flag any potential conflicts, issuing clear warnings such as, "This recipe contains peanuts,and Guest X has a severe peanut allergy". This proactive validation is a key safety and inclusivity feature that provides immense peace of mind for the host.</p>
-                    </div>
+        <section id="hero" class="text-center mb-24">
+            <h1 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Social</span> Fabric of <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Food</span>
+            </h1>
+            <p class="max-w-3xl mx-auto mt-6 text-lg text-gray-300">Event Mate transforms cooking into a collaborative art form. Plan, execute, and scale your social gatherings with cutting-edge tools designed for the modern host.</p>
+        </section>
+
+        <section id="planning" class="mb-32 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-pink-400">Seamless</span> Social & Event Planning
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-gray-300 pr-8">
+                    <p>The planning module transforms event management into an intuitive, automated process. It handles everything from guest lists to dietary restrictions, ensuring no detail is overlooked.</p>
+                    <p>Hover over each step in the diagram to see how Event Mate simplifies hosting.</p>
                 </div>
-            </section>
-
-            <section id="culinary-execution" class="mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4 text-stone-900">4.2. Collaborative Culinary Execution</h2>
-                    <p class="mb-6 text-stone-700">Event Mate extends beyond planning to facilitate the collaborative preparation of food, whether for a potluck or a shared cooking session.</p>
-                    <div class="space-y-4">
-                        <p><strong>Multi-Person Task Coordination:</strong> For events involving shared cooking responsibilities, the host can break down complex recipes into individual tasks (e.g., "chop vegetables," "prepare the marinade," "assemble the dish"). These tasks can then be assigned to different guests or collaborators, who can view their assignments and check them off in a shared digital workspace. This functionality, inspired by professional catering software like Planning Pod,brings a new level of organization to group cooking.</p>
-                        <p><strong>Shared Shopping Lists:</strong> Once a menu is finalized, the system generates a consolidated shopping list. This list is automatically cross-referenced with the host's smart pantry inventory, removing any items that are already on hand.The final list can then be shared with multiple users. Collaborators can claim specific items to purchase and check them off in real-time, a feature that prevents duplicate buys and ensures all necessary ingredients are procured.This mirrors the core functionality of best-in-class collaborative shopping apps like AnyList.</p>
-                        <p><strong>Secure Multi-Party Computation (SMPC) for Privacy:</strong> To address privacy concerns in collaborative scenarios,the platform can offer an advanced feature utizing Secure Multi-Party Computation (SMPC). This cryptographic technique allows for joint computation on private data without revealing that data to the other parties. For example, a group could generate a combined shopping list of only the missing items without any individual having to share their entire pantry inventory with the group or a central server. While computationally intensive, offering SMPC as a premium feature would be a groundbreaking diferentiator for a consumer app,demonstrating a profound commitment to user privacy and trust.</p>
-                    </div>
+                <div id="planning-diagram" class="flex flex-col space-y-2 p-4 bg-gray-800/50 rounded-xl border border-purple-500/30">
+                    <!-- Diagram populated by JS -->
                 </div>
-            </section>
+            </div>
+            <div id="planning-details" class="mt-8 p-6 bg-gray-800 rounded-xl min-h-[120px] text-gray-300 transition-all duration-300">
+                <!-- Details populated by JS -->
+                <p class="text-gray-500">Hover over a step to see details.</p>
+            </div>
+        </section>
 
-            <section id="recipe-scaling" class="mb-12">
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-4 text-stone-900">4.3. Algorithmic Recipe Scaling</h2>
-                    <p class="mb-6 text-stone-700">Preparing a recipe for a large group requires more than simple multiplication. The Event Mate willincorporate an intelligent scaling algorithm to ensure consistent and successful results.</p>
-                    <div class="space-y-4">
-                        <p><strong>Calculating the Conversion Factor:</strong> The system willbegin with the standard recipe conversion formula: (New Servings / Original Servings) = Conversion Factor. Allingredient quantities in the selected recipe will be multiplied by this factor to generate a baseline scaled recipe.</p>
-                        <p><strong>Intelligent Ingredient Adjustments:</strong> The Al will apply a more nuanced scaling model that adjusts certain ingredients non-linearly. Spices,salt, herbs,and leavening agents often have a more potent effect in larger batches.The algorithm willstart by scaling these ingredients to only $7 5 - 8 0 \%$ of the calculated amount and wil l prompt the user to taste and adjust during the final stages of cooking, preventing an overly seasoned or unbalanced dish.</p>
-                        <p><strong>Adapting for Equipment and Time:</strong> The Al will also provide crucial logistical guidance for scaled-up recipes. This includes recommending the use of larger pots and pans,adjusting cooking times (a general rule of thumb is a $10 - 1 5 \%$ increase for every doubling of the batch size),and providing warnings about changes in heat distribution and liquid evaporation rates in larger vessels. For very large groups, the system may suggest batch-cooking certain components separately and combining them at the end to ensure even cooking.This transforms the app from a simple calculator into a genuine culinary assistant for large-scale cooking.</p>
-                    </div>
+        <section id="execution" class="mb-32 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-cyan-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+                </svg>
+                 <span class="text-cyan-400">Collaborative</span> Culinary Execution
+            </h2>
+             <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-4 text-gray-300 md:order-2 pl-8">
+                    <p>Turn cooking into a team sport. The execution module provides tools for coordinating tasks and sharing shopping lists, making group meal prep organized and fun.</p>
+                    <p>Interact with the shopping list to see how it works.</p>
                 </div>
-            </section>
+                <div class="md:order-1 p-6 bg-gray-800/50 rounded-xl border border-purple-500/30">
+                    <h3 class="font-bold text-lg mb-4 text-cyan-300">Shared Shopping List</h3>
+                    <div id="shopping-list" class="space-y-3">
+                        <!-- Shopping list populated by JS -->
+                    </div>
+                    <p class="text-xs text-gray-500 mt-4">This is a non-functional demonstration.</p>
+                </div>
+            </div>
+        </section>
 
-            <section id="social-network" class="mb-12">
-                 <div class="bg-white p-6 rounded-lg shadow-md">
-                    <p class="text-stone-700">The introduction of the Event Mate fundamentally shifts the platform from a personal utility to a social network centered on food. This creates a powerful network effect; each event planned is an opportunity to introduce new users to the ecosystem, fostering organic, community-led growth.</p>
-                 </div>
-            </section>
-        </main>
+        <section id="scaling" class="mb-24 scroll-mt-20">
+            <h2 class="text-4xl font-bold text-center mb-16 flex items-center justify-center gap-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M3 6a3 3 0 013-3h1.172a3 3 0 012.12.879l.879 2.121A3 3 0 0112.172 7H14a3 3 0 013 3v4a3 3 0 01-3 3H6a3 3 0 01-3-3V6z" />
+                  <path d="M15 10a1 1 0 11-2 0 1 1 0 012 0z" />
+                </svg>
+                <span class="text-yellow-400">Algorithmic</span> Recipe Scaling
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                 <div class="space-y-4 text-gray-300 pr-8">
+                    <p>Perfectly scale any recipe with our intelligent algorithm. It adjusts not just quantities, but also spices and cooking times for flawless results, every time.</p>
+                    <p>Use the slider to see how the recipe adapts for more guests.</p>
+                </div>
+                <div class="p-6 bg-gray-800/50 rounded-xl border border-purple-500/30">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg text-yellow-300">Spicy Tomato Pasta</h3>
+                        <div class="text-right">
+                            <span id="servings-display" class="font-bold text-2xl">4</span>
+                            <span class="block text-xs text-gray-400">Servings</span>
+                        </div>
+                    </div>
+                    <input id="servings-slider" type="range" min="1" max="20" value="4" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    <ul id="recipe-list" class="mt-6 space-y-2 text-gray-300">
+                        <!-- Recipe populated by JS -->
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    </div>
+    </main>
+
+    <footer class="bg-gray-900/50 border-t border-purple-500/30">
+        <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+            <p>&copy; 2025 Event Mate. A module of the FSC Ecosystem.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Section 1: Planning Diagram ---
+        const planningDiagram = document.getElementById('planning-diagram');
+        const planningDetails = document.getElementById('planning-details');
+        const planningData = [
+            {
+                title: '1. Integrated Event Management',
+                details: 'Functioning as a specialized planning tool, it seamlessly integrates with your native calendar and contacts. It manages the entire event lifecycle, from invitations and RSVPs to being a central communication hub.'
+            },
+            {
+                title: '2. Guest Profile & Dietary Needs',
+                details: 'A critical feature for automated management of guest dietary needs. A simple form for guests to specify restrictions and allergies, which are then aggregated into a master list for the host.'
+            },
+            {
+                title: '3. Menu Planning & Validation',
+                details: 'Build your event menu within the app, selecting from personal recipes or generating new ones with AI. The system cross-references the menu against guest dietary data, flagging any potential conflicts.'
+            }
+        ];
+
+        planningData.forEach((item, index) => {
+            const step = document.createElement('div');
+            step.className = 'planning-step p-3 bg-gray-700/50 rounded-lg cursor-pointer border-2 border-transparent hover:border-pink-400 transition-all duration-300';
+            step.textContent = item.title;
+            step.dataset.index = index;
+            planningDiagram.appendChild(step);
+
+            if(index < planningData.length - 1) {
+                const arrow = document.createElement('div');
+                arrow.className = 'text-center text-purple-400 font-bold text-2xl';
+                arrow.textContent = '↓';
+                planningDiagram.appendChild(arrow);
+            }
+        });
+
+        planningDiagram.addEventListener('mouseover', (e) => {
+            if (e.target.classList.contains('planning-step')) {
+                const index = e.target.dataset.index;
+                planningDetails.innerHTML = `<h4 class="font-bold text-pink-400 mb-2">${planningData[index].title}</h4><p>${planningData[index].details}</p>`;
+            }
+        });
+
+        planningDiagram.addEventListener('mouseleave', () => {
+            planningDetails.innerHTML = `<p class="text-gray-500">Hover over a step to see details.</p>`;
+        });
+
+        // --- Section 2: Shopping List ---
+        const shoppingList = document.getElementById('shopping-list');
+        const shoppingItems = [
+            { name: 'Tomatoes', claimedBy: null },
+            { name: 'Pasta', claimedBy: 'Alex' },
+            { name: 'Garlic', claimedBy: null },
+            { name: 'Basil', claimedBy: 'Jules' },
+            { name: 'Olive Oil', claimedBy: null }
+        ];
+
+        function renderShoppingList() {
+            shoppingList.innerHTML = '';
+            shoppingItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center p-3 bg-gray-700/50 rounded-lg';
+                div.innerHTML = `
+                    <span class="text-cyan-300">${item.name}</span>
+                    <button data-name="${item.name}" class="claim-btn text-xs font-semibold py-1 px-3 rounded-full transition-all duration-300 ${item.claimedBy ? 'bg-green-500 text-white cursor-not-allowed' : 'bg-cyan-500 hover:bg-cyan-400 text-gray-900'}">
+                        ${item.claimedBy ? `Claimed by ${item.claimedBy}` : 'Claim'}
+                    </button>
+                `;
+                shoppingList.appendChild(div);
+            });
+        }
+
+        shoppingList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('claim-btn')) {
+                const itemName = e.target.dataset.name;
+                const item = shoppingItems.find(i => i.name === itemName);
+                if (!item.claimedBy) {
+                    item.claimedBy = 'You';
+                    renderShoppingList();
+                }
+            }
+        });
+
+        renderShoppingList();
+
+
+        // --- Section 3: Recipe Scaler ---
+        const servingsSlider = document.getElementById('servings-slider');
+        const servingsDisplay = document.getElementById('servings-display');
+        const recipeList = document.getElementById('recipe-list');
+
+        const baseRecipe = [
+            { name: 'Pasta', base: 500, unit: 'g' },
+            { name: 'Tomatoes', base: 800, unit: 'g' },
+            { name: 'Garlic', base: 4, unit: 'cloves' },
+            { name: 'Chili Flakes', base: 1, unit: 'tsp', nonLinear: true },
+            { name: 'Salt', base: 1.5, unit: 'tsp', nonLinear: true }
+        ];
+
+        function updateRecipe() {
+            const baseServings = 4;
+            const newServings = parseInt(servingsSlider.value);
+            servingsDisplay.textContent = newServings;
+            const factor = newServings / baseServings;
+
+            recipeList.innerHTML = '';
+            baseRecipe.forEach(ing => {
+                let newAmount = ing.base * factor;
+                let displayAmount;
+                let note = '';
+
+                if (ing.nonLinear && factor > 1) {
+                    // Apply non-linear scaling: full factor for the first doubling, then less
+                    const nonLinearFactor = 1 + (factor - 1) * 0.75;
+                    newAmount = ing.base * nonLinearFactor;
+                    note = `<span class="text-yellow-400 text-xs ml-2">(adjusted for taste)</span>`;
+                }
+
+                if (newAmount < 1) {
+                    displayAmount = newAmount.toFixed(2);
+                } else if (newAmount < 10) {
+                    displayAmount = newAmount.toFixed(1);
+                } else {
+                    displayAmount = Math.round(newAmount);
+                }
+
+                const li = document.createElement('li');
+                li.className = 'flex justify-between border-b border-gray-700 py-1';
+                li.innerHTML = `<span>${ing.name}</span> <span class="font-mono">${displayAmount} ${ing.unit}${note}</span>`;
+                recipeList.appendChild(li);
+            });
+        }
+
+        servingsSlider.addEventListener('input', updateRecipe);
+
+        updateRecipe();
+    });
+    </script>
 </body>
 </html>
